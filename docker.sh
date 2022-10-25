@@ -5,18 +5,21 @@
 
 
 echo "install docker engine package"
-
-sudo yum install https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.03.0.ce-1.el7.centos.x86_64.rpm -y
-
-echo "docker was install successfuly"
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+yum install install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io docker-compose-plugin        
+ echo "docker was install successfuly"
 sleep 4
-
 echo " now dokers will start"
-sudo systemctl start docker
+ systemctl start docker
 echo "docker started successfuly"
 sleep 3
 echo "now Verify that Docker Engine is installed correctly by running the hello-world image."
 sleep 3
-sudo docker run hello-world
+ docker run hello-world
 
-echo " the verification was successful"
+"docker.sh" 23L, 771C
+
